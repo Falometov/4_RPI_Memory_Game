@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+		function change_background(obj)
+		{
+       		obj.value && (document.body.style.background = 'url('+obj.value+') no-repeat fixed center top 0% / 100% auto');
+		}
+	</script>
+</head>
+<body>
+    <div class="top_menu">
+        <div class="float_left">
+            <div class="button" id="bg_selector">
+			    Background
+            </div>
+            <ul>
+                <li>
+                	<button class="button bg_li" value="images/bg1.jpg" onclick="change_background(this)">Light</button>
+                </li>
+                <li value="images/bg2.jpg" onclick="change_background(this)">
+                	<button class="button bg_li" value="images/bg2.jpg" onclick="change_background(this)">Dark</button>
+                </li>
+                <li value="images/bg3.jpg" onclick="change_background(this)">
+                	<button class="button bg_li" value="images/bg3.jpg" onclick="change_background(this)">Pink</button>
+                </li>
+            </ul>
+        </div>
+        <div class="button float_left">
+			Difficulty
+		</div>
+    </div>
+    
+        
+    
+</body>
+</html>

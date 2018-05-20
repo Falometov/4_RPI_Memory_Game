@@ -1,0 +1,62 @@
+body{
+	background: url(images/bg1.jpg) no-repeat fixed center top 0% / 100% auto;
+	min-width: 1000px;
+    font-family: Konfuciuz;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+}
+
+.button{
+	font-family: Konfuciuz;
+    font-size: 35px;
+    background: rgb(0, 0, 0, 0.65);
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    padding: 0;
+    width: 200px;
+    height: 60px;
+	border: none;
+    
+}
+
+.button:hover{
+	background: rgb(0, 0, 0, 0.85);
+}
+
+.top_menu{
+    margin: 0;
+    padding: 0;
+	text-align: center;
+}
+
+ul{
+    padding: 0;
+    display: none;
+    margin: 0;
+}
+
+.float_left{
+    float: left;
+}
+
+.bg_li{
+    margin-top: 0;
+}
+	
+#bg_selector:hover + ul{
+    display: block;
+}
+
+ul:hover{
+    display: block;
+}
+
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
