@@ -45,21 +45,16 @@ ul{
     float: left;
 }
 
-.bg_li{
+.sel_li{
     margin-top: 0;
 }
 	
-#bg_selector:hover + ul{
+#selector:hover + ul{
     display: block;
 }
 
 ul:hover{
     display: block;
-}
-
-:active, :hover, :focus {
-    outline: 0;
-    outline-offset: 0;
 }
 
 .padding_left{
@@ -68,7 +63,6 @@ ul:hover{
 
 .timer{
 	margin: 0;
-	margin-left: 0px;
 	background: rgb(0, 0, 0, 0);
 	width: 170px;
 	cursor: default;
@@ -78,6 +72,15 @@ ul:hover{
 	background: rgb(0, 0, 0, 0);
 }
 
+.timer_head{
+	cursor: default;
+}
+
 .timer_head:hover{
 	background: rgb(0, 0, 0, 0.65);
+}
+
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
 }

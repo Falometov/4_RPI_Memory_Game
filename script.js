@@ -1,4 +1,4 @@
-//
+
 //var cards = [
 //	{
 //		img: "images/1.jpg",
@@ -72,9 +72,9 @@ var delay = 100,
 		var edit = document.getElementById("timer");
 		var current_time = h+" : "+m+" : "+s+" . "+ms;
 		edit.value = current_time;
-		setTimeout(startTimer, delay);	
-		
-		
+		timer();			
 	};
 
-var timer = setTimeout(startTimer, delay);
+function timer(){
+	setTimeout(startTimer, delay);
+}
