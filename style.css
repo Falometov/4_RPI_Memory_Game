@@ -38,6 +38,7 @@ ul{
     padding: 0;
     display: none;
     margin: 0;
+	list-style-type: none;
 }
 
 .float_left{
@@ -59,4 +60,24 @@ ul:hover{
 :active, :hover, :focus {
     outline: 0;
     outline-offset: 0;
+}
+
+.padding_left{
+	padding-left: 15px;
+}
+
+.timer{
+	margin: 0;
+	margin-left: 30px;
+	background: rgb(0, 0, 0, 0);
+	width: 170px;
+	cursor: default;
+}
+
+.timer:hover{
+	background: rgb(0, 0, 0, 0);
+}
+
+.timer_head:hover{
+	background: rgb(0, 0, 0, 0.65);
 }
