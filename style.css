@@ -68,7 +68,7 @@ ul:hover{
 
 .timer{
 	margin: 0;
-	margin-left: 30px;
+	margin-left: 0px;
 	background: rgb(0, 0, 0, 0);
 	width: 170px;
 	cursor: default;
