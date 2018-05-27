@@ -1,53 +1,25 @@
+var rows = 4,
+	columns;
 
-//var cards = [
-//	{
-//		img: "images/1.jpg",
-//		id: 1
-//	},
-//	{
-//		img: "images/2.jpg",
-//		id: 2
-//	},
-//	{
-//		img: "images/3.jpg",
-//		id: 3
-//	},
-//	{
-//		img: "images.jpg",
-//		id: 4
-//	},
-//	{
-//		img: "images/5.jpg",
-//		id: 5
-//	},
-//	{
-//		img: "images/6.jpg",
-//		id: 6
-//	},
-//	{
-//		img: "images/7.jpg",
-//		id: 7
-//	},
-//	{
-//		img: "images/8.jpg",
-//		id: 8
-//	},
-//	{
-//		img: "images/9.jpg",
-//		id: 9
-//	},
-//	{
-//		img: "images/10.jpg",
-//		id: 10
-//	},
-//	{
-//		img: "images/11.jpg",
-//		id: 11
-//	},
-//	{
-//		img: "images/12.jpg",
-//	}
-//];
+function startGame(event){
+	event.preventDefault();
+	var ArrayOfCards = [
+		{'name':'1','picture':'images/1.jpg'},
+		{'name':'2','picture':'images/2.jpg'},
+		{'name':'3','picture':'images/3.jpg'},
+		{'name':'4','picture':'images/4.jpg'},
+		{'name':'5','picture':'images/5.jpg'},
+		{'name':'6','picture':'images/6.jpg'},
+		{'name':'7','picture':'images/7.jpg'},
+		{'name':'8','picture':'images/8.jpg'},
+		{'name':'9','picture':'images/9.jpg'},
+		{'name':'10','picture':'images/10.jpg'},
+		{'name':'11','picture':'images/11.jpg'},
+		{'name':'12','picture':'images/12.jpg'}];
+	var firstCard = '',
+		secondCard = '',
+		count = 0;
+}
 
 var delay = 100,
 	i = 0,
@@ -77,4 +49,13 @@ var delay = 100,
 
 function timer(){
 	setTimeout(startTimer, delay);
+}
+
+function changeBackground(obj){
+	obj.value && (document.body.style.background = 'url('+obj.value+') no-repeat fixed center top 0% / 100% auto');
+}
+
+function setDifficulty(obj){
+	var diff = obj.value;
+	columns = diff/rows;
 }
