@@ -21,6 +21,7 @@ body{
     width: 200px;
     height: 60px;
 	border: none;
+	z-index: 10;
     
 }
 
@@ -37,6 +38,7 @@ body{
     margin: 0;
     padding: 0;
 	text-align: center;
+	z-index: 10;
 }
 
 ul{
@@ -83,6 +85,52 @@ ul:hover{
 
 .timer_head:hover{
 	background: rgb(0, 0, 0, 0.65);
+}
+
+.card_img, .card_front, .card_back{
+	height: 200px;
+	width: 134px;	
+	float: left;
+}
+
+.card_img{
+	margin-right: 30px;
+	margin-bottom: 10px;
+}
+
+.card_back, .card_front{
+	position: absolute;
+	backface-visibility: hidden;
+}
+
+.card_back{
+}
+
+.first_back, .second_back{
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.first_back{
+	background-image: url(images/Back1.jpg);
+}
+
+.second_back{
+	background-image: url(images/Back2.jpg);
+}
+
+.work_space{
+	width: 100%;
+}
+
+.work_divs{
+	position: absolute;
+	width: 1000px;
+	margin-top: 100px;
+	margin-left: 500px;
+	margin-right: 200px;
+	z-index: 5;
 }
 
 :active, :hover, :focus {
