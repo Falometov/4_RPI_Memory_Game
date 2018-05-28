@@ -18,7 +18,7 @@ body{
     margin-right: 0px;
     margin-bottom: 0px;
     padding: 0;
-    width: 200px;
+    width: 251px;
     height: 60px;
 	border: none;
 	z-index: 10;
@@ -103,7 +103,12 @@ ul:hover{
 	backface-visibility: hidden;
 }
 
-.card_back{
+.card_front{
+	transform: rotateY(180deg);
+  	background-color: #6589F9;
+  	background-size: cover;
+  	background-repeat: no-repeat;
+  	background-position: center center;
 }
 
 .first_back, .second_back{
@@ -124,13 +129,39 @@ ul:hover{
 	width: 100%;
 }
 
-.work_divs{
+.work_divs24{
 	position: absolute;
 	width: 1000px;
 	margin-top: 100px;
-	margin-left: 500px;
+	margin-left: 490px;
 	margin-right: 200px;
 	z-index: 5;
+}
+
+.work_divs16{
+	position: absolute;
+	width: 800px;
+	margin-top: 100px;
+	margin-left: 650px;
+	margin-right: 200px;
+	z-index: 5;
+}
+
+.work_divs20{
+	position: absolute;
+	width: 900px;
+	margin-top: 100px;
+	margin-left: 565px;
+	margin-right: 200px;
+	z-index: 5;
+}
+
+.selected_card{
+  transform: rotateY(180deg);
+}
+
+.match{
+ opacity: 0;
 }
 
 :active, :hover, :focus {

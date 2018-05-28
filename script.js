@@ -10,9 +10,6 @@ function changeBackground(obj){
 
 function setDifficulty(obj){
 	diff = obj.value;
-	if (diff === 16){
-		let workSpace = document.getElementById("");
-	}
 }
 
 function setBack(obj){
@@ -42,7 +39,7 @@ var delay = 100,
 				}
 			}
 		}
-		let edit = document.getElementById("timer"),
+		var edit = document.getElementById("timer"),
 			current_time = h+" : "+m+" : "+s+" . "+ms;
 		edit.value = current_time;
 		timer();			
@@ -79,7 +76,7 @@ function startGame(event){
 			}
 
 			function shuffle(array){
-				let indexBefore = array.length,
+				var indexBefore = array.length,
 					temp,
 					indexAfter;
 				while (indexBefore > 0){
@@ -95,11 +92,19 @@ function startGame(event){
 
 			shuffle(cards);
 
-			var cardsNum = 0,
+			var playingCards = 0,
 				previousTarget = null,
 				workSpace = document.getElementById("work_space"),
 				workDivs = document.createElement("section");
-			workDivs.classList.add("work_divs");
+			if (diff == 16){
+				workDivs.classList.add("work_divs16");
+			}
+			if (diff == 20){
+				workDivs.classList.add("work_divs20");
+			}
+			if (diff == 24){
+				workDivs.classList.add("work_divs24");
+			}
 			workDivs.style.heigh = 830+"px";
 
 			i = 0;
@@ -122,11 +127,60 @@ function startGame(event){
 				cardFront.style.backgroundImage = `url(images/${cards[i]}.jpg)`;
 
 				workDivs.appendChild(cardImage);
-				cardImage.appendChild(cardFront);
 				cardImage.appendChild(cardBack);
+				cardImage.appendChild(cardFront);
+				
 				i++;
 			}
 			workSpace.appendChild(workDivs);
+			
+			var matchCards = function match(){
+				var selectedCard = document.querySelectorAll(".selected_card");
+				selectedCard.forEach(function (card) {
+					card.classList.add("match");
+					diff--;
+					if(diff == 0){
+						clearTimeout(myTimer);
+						alert("You win! Congratulations! Yor time: "+h+":"+m+":"+s+"."+ms);
+					}
+				});
+			}
+			
+			var deleteCards = function del(){
+				previousTarget = null;
+				FirstCard = '';
+				SecondCard = '';
+				playingCards = 0;
+				let selectedCard = document.querySelectorAll(".selected_card");
+				selectedCard.forEach(function (card) {
+					card.classList.remove("selected_card");
+				});
+			};
+			
+			workDivs.addEventListener("click",function(event){
+				var clicked = event.target;
+				if (clicked.tagName === 'section' || clicked === previousTarget || clicked.parentNode.classList.contains("selected_card") || clicked.parentNode.classList.contains("match")) {
+    				return;
+  				}
+				if (playingCards < 2){
+					playingCards++;
+					if (playingCards == 1){
+						firstCard = clicked.parentNode.dataset.name;
+						clicked.parentNode.classList.add("selected_card");
+					}else{
+						secondCard =  clicked.parentNode.dataset.name;
+						clicked.parentNode.classList.add("selected_card");
+					}
+					
+					if (firstCard && secondCard){
+						if (firstCard == secondCard){
+							matchCards;
+						}
+						deleteCards;
+					}
+					previousTarget = clicked;
+				}
+			});
 		}
 	}
 }
