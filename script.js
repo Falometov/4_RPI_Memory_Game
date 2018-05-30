@@ -16,7 +16,19 @@ function setBack(obj){
 	backImage = obj.value;
 }
 
-var cardsList = ["1","2","3","4","5","6","7","8","9","10","11","12"];
+var cardsList = [{id:"1", img:"images/1.jpg"},
+				{id:"2", img:"images/2.jpg"},
+				{id:"3", img:"images/3.jpg"},
+				{id:"4", img:"images/4.jpg"},
+				{id:"5", img:"images/5.jpg"},
+				{id:"6", img:"images/6.jpg"},
+				{id:"7", img:"images/7.jpg"},
+				{id:"8", img:"images/8.jpg"},
+				{id:"9", img:"images/9.jpg"},
+				{id:"10", img:"images/10.jpg"},
+				{id:"11", img:"images/11.jpg"},
+				{id:"12", img:"images/12.jpg"}];
+
 
 var delay = 100,
 	i = 0,
@@ -58,7 +70,6 @@ function startGame(event){
 		if (diff == null){
 			alert("Please, choose difficulty level!");
 		}else{
-			event.preventDefault();
 			game = true;
 			if (!timerStatus){
 				timerStatus = true;
@@ -111,7 +122,7 @@ function startGame(event){
 			while (i < cards.length){
 				var cardImage = document.createElement("div");
 				cardImage.classList.add("card_img");
-				cardImage.dataset.id = cards[i];
+				cardImage.dataset.name = cards[i].id;
 
 				var cardBack = document.createElement("div");
 				cardBack.classList.add("card_back");
@@ -123,19 +134,20 @@ function startGame(event){
 
 				var cardFront = document.createElement("div");
 				cardFront.classList.add("card_front");
-				console.log(i);
-				cardFront.style.backgroundImage = `url(images/${cards[i]}.jpg)`;
-
+				cardFront.style.backgroundImage = `url(${cards[i].img})`;
+				
 				workDivs.appendChild(cardImage);
 				cardImage.appendChild(cardBack);
 				cardImage.appendChild(cardFront);
+				
+
 				
 				i++;
 			}
 			workSpace.appendChild(workDivs);
 			
-			var matchCards = function match(){
-				var selectedCard = document.querySelectorAll(".selected_card");
+			var matchCards = function(){
+				var selectedCard = document.querySelectorAll(".selected");
 				selectedCard.forEach(function (card) {
 					card.classList.add("match");
 					diff--;
@@ -146,41 +158,52 @@ function startGame(event){
 				});
 			}
 			
-			var deleteCards = function del(){
+			var deleteCards = function(){
+				console.log("del");
 				previousTarget = null;
 				FirstCard = '';
 				SecondCard = '';
 				playingCards = 0;
-				let selectedCard = document.querySelectorAll(".selected_card");
+				var selectedCard = document.querySelectorAll(".selected");
 				selectedCard.forEach(function (card) {
-					card.classList.remove("selected_card");
+					card.classList.remove("selected");
+				});
+				var selectedCard = document.querySelectorAll(".turn");
+				selectedCard.forEach(function (card) {
+					card.classList.remove("turn");
 				});
 			};
 			
 			workDivs.addEventListener("click",function(event){
+				
 				var clicked = event.target;
-				if (clicked.tagName === 'section' || clicked === previousTarget || clicked.parentNode.classList.contains("selected_card") || clicked.parentNode.classList.contains("match")) {
+				if (clicked.tagName === 'section' || clicked === previousTarget || clicked.parentNode.classList.contains("selected") || clicked.parentNode.classList.contains("match")) {
     				return;
   				}
 				if (playingCards < 2){
 					playingCards++;
 					if (playingCards == 1){
 						firstCard = clicked.parentNode.dataset.name;
-						clicked.parentNode.classList.add("selected_card");
+						clicked.parentNode.classList.add("selected");
+						clicked.classList.add("turn");
 					}else{
 						secondCard =  clicked.parentNode.dataset.name;
-						clicked.parentNode.classList.add("selected_card");
+						clicked.parentNode.classList.add("selected");
+						clicked.classList.add("turn");
 					}
-					
-					if (firstCard && secondCard){
-						if (firstCard == secondCard){
-							matchCards;
+					function doNext(){
+						console.log("vot tak vot");
+						if (playingCards == 2){
+							if (firstCard == secondCard){
+								matchCards();
+							}
+							deleteCards();	
 						}
-						deleteCards;
 					}
+					setTimeout(doNext, 1000);
 					previousTarget = clicked;
 				}
-			});
+			});		
 		}
 	}
 }

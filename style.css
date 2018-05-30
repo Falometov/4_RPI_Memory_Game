@@ -89,26 +89,30 @@ ul:hover{
 
 .card_img, .card_front, .card_back{
 	height: 200px;
-	width: 134px;	
-	float: left;
+	width: 134px;
 }
 
 .card_img{
 	margin-right: 30px;
-	margin-bottom: 10px;
+	margin-bottom: 10px;	
+	float: left;
 }
 
-.card_back, .card_front{
+.card_front, .card_back,{
 	position: absolute;
 	backface-visibility: hidden;
 }
 
 .card_front{
 	transform: rotateY(180deg);
-  	background-color: #6589F9;
   	background-size: cover;
   	background-repeat: no-repeat;
   	background-position: center center;
+}
+
+.card_back{
+	position: absolute;
+	z-index:2;
 }
 
 .first_back, .second_back{
@@ -156,12 +160,16 @@ ul:hover{
 	z-index: 5;
 }
 
-.selected_card{
-  transform: rotateY(180deg);
+.selected{
+ 	transform: rotateY(180deg);
 }
 
 .match{
- opacity: 0;
+	opacity: 0;
+}
+
+.turn{
+	opacity: 0;
 }
 
 :active, :hover, :focus {
