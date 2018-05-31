@@ -126,7 +126,7 @@ function startGame(event){
 
 				var cardBack = document.createElement("div");
 				cardBack.classList.add("card_back");
-				if (backImage === 1){
+				if (backImage == 1){
 					cardBack.classList.add("first_back");
 				}else{
 					cardBack.classList.add("second_back");
